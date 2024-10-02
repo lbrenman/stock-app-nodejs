@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock App</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #0073e6;
+            margin-bottom: 20px;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .tab {
+            cursor: pointer;
+            padding: 10px 20px;
+            border: 1px solid #0073e6;
+            border-radius: 5px 5px 0 0;
+            background: #0073e6;
+            color: white;
+            margin-right: 5px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .tab:hover {
+            background: #005bb5;
+        }
+        .tab:last-child {
+            margin-right: 0;
+        }
+        .tab-content {
+            display: none;
+            border: 1px solid #0073e6;
+            border-radius: 0 5px 5px 5px;
+            padding: 20px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .active-tab {
+            display: block;
+        }
+        .active-tab-btn {
+            background: white;
+            color: #0073e6;
+            border-bottom: none;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #0073e6;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #005bb5;
+        }
+        .stock-info, .watchlist-info {
+            margin-top: 20px;
+        }
+        .watchlist-info table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .watchlist-info table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        th {
+            background: #0073e6;
+            color: white;
+            text-align: left;
+        }
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stock App</h1>
+        <div class="tabs">
+            <div id="quoteTab" class="tab active-tab-btn">Stock Quote</div>
+            <div id="watchlistTab" class="tab">Watch List</div>
+        </div>
+
+        <div id="quoteContent" class="tab-content active-tab">
+            <h2>Stock Quote</h2>
+            <div class="form-group">
+                <label for="stockSymbol">Enter Stock Symbol:</label>
+                <input type="text" id="stockSymbol" placeholder="AAPL">
+            </div>
+            <button id="getQuoteButton">Get Quote</button>
+            <div class="stock-info" id="stockInfo"></div>
+        </div>
+
+        <div id="watchlistContent" class="tab-content">
+            <h2>Watch List</h2>
+            <div class="form-group">
+                <label for="stockSymbols">Enter Stock Symbols (comma separated):</label>
+                <input type="text" id="stockSymbols" placeholder="AAPL,GOOGL,MSFT">
+            </div>
+            <button id="getWatchlistButton">Get Watch List</button>
+            <div class="watchlist-info" id="watchlistInfo"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('quoteTab').addEventListener('click', function() {
+            document.getElementById('quoteContent').classList.add('active-tab');
+            document.getElementById('watchlistContent').classList.remove('active-tab');
+            document.getElementById('quoteTab').classList.add('active-tab-btn');
+            document.getElementById('watchlistTab').classList.remove('active-tab-btn');
+        });
+
+        document.getElementById('watchlistTab').addEventListener('click', function() {
+            document.getElementById('watchlistContent').classList.add('active-tab');
+            document.getElementById('quoteContent').classList.remove('active-tab');
+            document.getElementById('watchlistTab').classList.add('active-tab-btn');
+            document.getElementById('quoteTab').classList.remove('active-tab-btn');
+        });
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>

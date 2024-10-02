@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .tab {
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .tab-content {
+            display: none;
+        }
+        .active-tab {
+            display: block;
+        }
+        .stock-info, .watchlist-info {
+            margin-top: 20px;
+        }
+        .watchlist-info table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .watchlist-info table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stock App</h1>
+    <div class="tabs">
+        <div id="quoteTab" class="tab">Stock Quote</div>
+        <div id="watchlistTab" class="tab">Watch List</div>
+    </div>
+
+    <div id="quoteContent" class="tab-content">
+        <h2>Stock Quote</h2>
+        <label for="stockSymbol">Enter Stock Symbol:</label>
+        <input type="text" id="stockSymbol" placeholder="AAPL">
+        <button id="getQuoteButton">Get Quote</button>
+        <div class="stock-info" id="stockInfo"></div>
+    </div>
+
+    <div id="watchlistContent" class="tab-content">
+        <h2>Watch List</h2>
+        <label for="stockSymbols">Enter Stock Symbols (comma separated):</label>
+        <input type="text" id="stockSymbols" placeholder="AAPL,GOOGL,MSFT">
+        <button id="getWatchlistButton">Get Watch List</button>
+        <div class="watchlist-info" id="watchlistInfo"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
